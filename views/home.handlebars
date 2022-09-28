@@ -64,7 +64,15 @@
                                         <tbody>
                                             <tr>
                                                 <td>Valid</td>
-                                                <td>\{{ row.valid }}</td>
+                                                <td>
+                                                    <span v-if="row.valid">
+                                                        <img src="https://www.freeiconspng.com/thumbs/yes-png/yes-png-9.png" height="16">
+                                                    </span>
+                                                    <span v-else>
+                                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/No-Symbol.png/240px-No-Symbol.png"
+                                                             height="16">
+                                                    </span>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Valid from</td>
@@ -172,7 +180,7 @@
                     },
 
                     result(date) {
-                        return this.date === date;
+                        return new Date(this.date).getTime() === new Date(date).getTime();
                     }
                 },
                 computed: {
