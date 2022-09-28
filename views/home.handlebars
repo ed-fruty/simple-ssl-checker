@@ -128,9 +128,8 @@
                 }),
                 methods: {
                     submitForm() {
+                        this.table = [];
                         if (this.validate()) {
-
-                            this.table = [];
                                 for (let ip of this.ips) {
                                     let [currentIp, port = 443] = ip.split(':');
                                     this.table.push({
