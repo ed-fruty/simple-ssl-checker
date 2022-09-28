@@ -9,7 +9,7 @@ app.set('view engine', 'handlebars');
 app.set('views', './views');
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.render('home', {layout: false});
 })
 
 app.get('/check', async (req, res) => {
@@ -22,10 +22,6 @@ app.get('/check', async (req, res) => {
   }
 });
 
-app.get('/home', (req, res) => {
-  res.render('home', {layout: false});
-
-});
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
