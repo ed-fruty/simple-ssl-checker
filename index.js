@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
 app.get('/check', async (req, res) => {
   try {
     const result =  await checker(req.query.checker, req.query.host, req.query.ip);
-    console.log(result);
     return res.send(result);
   } catch (e) {
     res.send(e);
@@ -23,5 +22,5 @@ app.get('/check', async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`App listening on port ${port}`)
 })
