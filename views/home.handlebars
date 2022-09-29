@@ -145,7 +145,7 @@
                                 ip,
                             });
 
-                            const url = `/check?host=${this.host}&ip=${ip}&checker=${this.checker}`;
+                            const url = `/check?host=${this.host.trim()}&ip=${ip}&checker=${this.checker}`;
                             fetch(url)
                                 .then(response => response.json())
                                 .then((response) => {
@@ -165,12 +165,18 @@
                 },
                 computed: {
                     ips() {
-                        const ips =  this.ip.split(/\r?\n/).join(' ').split(' ');
+                        const ips =  this.ip
+                            .split(/\r?\n/)
+                            .join(' ')
+                            .split(' ')
+                            .map(ip => ip.trim())
+                            .filter(ip => Boolean(ip));
+
                         if (ips.length > 0) {
                             return ips;
                         }
 
-                        return [this.host];
+                        return [this.host.trim()];
                     }
                 }
             }).mount('#app')
